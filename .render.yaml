@@ -1,7 +1,7 @@
 services:
   - type: web
-    name: laravel-app
+    name: laravel
     env: docker
-    dockerfilePath: Dockerfile
-    plan: free
-    autoDeploy: true
+    buildCommand: "docker build -t laravel-app ."
+    startCommand: "docker run -p 80:80 laravel-app"
+    dockerfilePath: Dockerfile 
