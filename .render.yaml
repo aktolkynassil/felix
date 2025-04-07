@@ -1,7 +1,10 @@
 services:
   - type: web
-    name: laravel
+    name: laravel-app
     env: docker
-    buildCommand: "docker build -t laravel-app ."
-    startCommand: "docker run -p 80:80 laravel-app"
+    buildCommand: "composer install --no-dev --optimize-autoloader"
+    startCommand: "apache2-foreground"
     dockerfilePath: Dockerfile 
+    envVars:
+      - key: APP_ENV
+        value: production
